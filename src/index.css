@@ -1,0 +1,456 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-charcoal: #121212;
+    --color-matte-black: #0A0A0A;
+    --color-gold: #D4AF37;
+    --color-gold-light: #F3E5AB;
+    --color-gold-dark: #AA771C;
+    --color-offwhite: #F7F7F8;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #0A0A0A;
+    color: #F7F7F8;
+  }
+
+  body {
+    background-color: #0A0A0A;
+    color: #F7F7F8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-inter {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Ultra-bold architectural layout headers */
+.font-condensed {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  line-height: 0.88;
+}
+
+.fade-transition {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Luxury gold glow effect */
+.glow-gold {
+  box-shadow: 0 0 25px -5px rgba(212, 175, 55, 0.25);
+}
+
+.glow-gold-lg {
+  box-shadow: 0 0 40px -10px rgba(212, 175, 55, 0.4);
+}
+
+/* Custom dark slim scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0D0D0D;
+}
+::-webkit-scrollbar-thumb {
+  background: #2A2A2A;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D4AF37;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+/* Blueprint / Wireframe line drawing animation */
+@keyframes drawStroke {
+  0% {
+    stroke-dashoffset: 1000;
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.9;
+  }
+}
+
+@keyframes pulseGold {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(184, 144, 32, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(184, 144, 32, 0);
+  }
+}
+
+.animate-wireframe {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawStroke 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.pulse-gold-beacon {
+  animation: pulseGold 2s infinite ease-in-out;
+}
+
+/* Native App hardware-accelerated stacking transitions */
+.screen-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #FFFFFF;
+  transform: translate3d(0, 0, 0);
+  will-change: transform, opacity;
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), opacity 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar for native app feel */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Realistic 3D Gold Shaded Sphere */
+.sphere-3d {
+  background: radial-gradient(circle at 32% 30%, #FFFFFF 0%, #F5E6CC 20%, #C5A880 50%, #7A5826 80%, #201505 100%);
+  box-shadow: 
+    inset -3px -3px 8px rgba(0, 0, 0, 0.8),
+    inset 2px 2px 5px rgba(255, 255, 255, 0.8),
+    0 4px 16px rgba(197, 168, 128, 0.45),
+    0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+@keyframes sphereGlider {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(170px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes sphereRotateOrbit {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.08);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.animate-sphere-glider {
+  animation: sphereGlider 3.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+@keyframes sphereGliderShort {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(110px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@media (max-width: 640px) {
+  @keyframes sphereGliderShort {
+    0% {
+      transform: translateX(0px);
+    }
+    50% {
+      transform: translateX(85px);
+    }
+    100% {
+      transform: translateX(0px);
+    }
+  }
+}
+
+.animate-sphere-glider-short {
+  animation: sphereGliderShort 2.4s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+.animate-sphere-orbit {
+  animation: sphereRotateOrbit 4s ease-in-out infinite;
+}
+
+@keyframes searchPulseGlow {
+  0% {
+    box-shadow: 0 0 16px -2px rgba(212, 175, 55, 0.22), 0 8px 24px -6px rgba(0, 0, 0, 0.7), inset 0 0 10px rgba(212, 175, 55, 0.05);
+    border-color: rgba(212, 175, 55, 0.35);
+  }
+  25% {
+    box-shadow: 0 0 26px 0px rgba(212, 175, 55, 0.4), 0 10px 30px -6px rgba(0, 0, 0, 0.75), inset 0 0 16px rgba(212, 175, 55, 0.12);
+    border-color: rgba(212, 175, 55, 0.65);
+  }
+  50% {
+    box-shadow: 0 0 40px 4px rgba(212, 175, 55, 0.58), 0 0 60px -4px rgba(212, 175, 55, 0.28), 0 14px 38px -6px rgba(0, 0, 0, 0.85), inset 0 0 22px rgba(212, 175, 55, 0.2);
+    border-color: rgba(243, 229, 171, 0.95);
+  }
+  75% {
+    box-shadow: 0 0 26px 0px rgba(212, 175, 55, 0.4), 0 10px 30px -6px rgba(0, 0, 0, 0.75), inset 0 0 16px rgba(212, 175, 55, 0.12);
+    border-color: rgba(212, 175, 55, 0.65);
+  }
+  100% {
+    box-shadow: 0 0 16px -2px rgba(212, 175, 55, 0.22), 0 8px 24px -6px rgba(0, 0, 0, 0.7), inset 0 0 10px rgba(212, 175, 55, 0.05);
+    border-color: rgba(212, 175, 55, 0.35);
+  }
+}
+
+.animate-search-pulse {
+  animation: searchPulseGlow 4.2s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+  will-change: box-shadow, border-color;
+}
+
+@keyframes smoothSheenSweep {
+  0% {
+    transform: translateX(-120%) skewX(-15deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.5;
+  }
+  48% {
+    transform: translateX(220%) skewX(-15deg);
+    opacity: 0.5;
+  }
+  49%, 100% {
+    transform: translateX(220%) skewX(-15deg);
+    opacity: 0;
+  }
+}
+
+.animate-sheen-sweep {
+  animation: smoothSheenSweep 5.5s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+  will-change: transform, opacity;
+}
+
+/* =============================================================================
+   UNIVERSAL TACTILE TAP ANIMATION (SMOOTHEST LUXURY MICRO-INTERACTION)
+   ============================================================================= */
+button, [role="button"], a {
+  transition: transform 0.22s cubic-bezier(0.2, 0.9, 0.3, 1), filter 0.2s ease, box-shadow 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:active, [role="button"]:active, a:active, .btn-tapped:active {
+  transform: scale(0.965) translateY(1px) !important;
+  filter: brightness(1.15);
+}
+
+@keyframes tapPressBounce {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(0.965) translateY(1px);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-tap-press:active {
+  animation: tapPressBounce 0.26s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+/* =============================================================================
+   BULLETPROOF 16:9 VIDEO & MEDIA PLAYER (PREVENTS THIN-LINE COLLAPSE)
+   ============================================================================= */
+.aspect-16-9-box {
+  width: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+  min-height: 260px !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: #000000 !important;
+  position: relative !important;
+}
+
+@media (min-width: 640px) {
+  .aspect-16-9-box {
+    min-height: 380px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .aspect-16-9-box {
+    min-height: 480px !important;
+  }
+}
+
+.aspect-16-9-video {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 260px !important;
+  object-fit: contain !important;
+  background-color: #000000 !important;
+  display: block !important;
+}
+
+@media (min-width: 640px) {
+  .aspect-16-9-video {
+    min-height: 380px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .aspect-16-9-video {
+    min-height: 480px !important;
+  }
+}
+
+/* =============================================================================
+/* =============================================================================
+   BUTTONS GLOWING SIDES (LIKE SEARCH BUTTON - STEADY NORMAL LUXURY GLOW)
+   ============================================================================= */
+@keyframes buttonSideGlow {
+  0%, 100% {
+    box-shadow: 0 0 14px rgba(212, 175, 55, 0.28), 0 0 2px rgba(212, 175, 55, 0.4), inset 0 0 6px rgba(212, 175, 55, 0.08);
+    border-color: rgba(212, 175, 55, 0.45);
+    background-color: rgba(20, 20, 20, 0.92);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(212, 175, 55, 0.52), 0 0 6px rgba(243, 229, 171, 0.3), inset 0 0 10px rgba(212, 175, 55, 0.16);
+    border-color: rgba(243, 229, 171, 0.85);
+    background-color: rgba(28, 24, 18, 0.95);
+  }
+}
+
+.animate-button-glow {
+  animation: buttonSideGlow 3.6s ease-in-out infinite;
+  will-change: box-shadow, border-color, background-color;
+}
+
+@keyframes dotLightSequence {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 6px rgba(212, 175, 55, 0.35);
+    background-color: #C5A880;
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.35);
+    box-shadow: 0 0 18px rgba(243, 229, 171, 0.95), 0 0 8px #ffffff;
+    background-color: #F3E5AB;
+    opacity: 1;
+  }
+}
+
+.animate-dot-glow {
+  animation: dotLightSequence 4.2s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+  will-change: transform, box-shadow, background-color;
+}
+
+/* =============================================================================
+   ULTRA-SMOOTH PAGE TRANSITIONS & AMBIENT RESPONSIVE ENHANCEMENTS
+   ============================================================================= */
+@keyframes pageSmoothFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-page-smooth {
+  animation: pageSmoothFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity;
+}
+
+@keyframes subtleAmbientBreathe {
+  0% {
+    transform: scale(1.01) translateY(0);
+  }
+  100% {
+    transform: scale(1.04) translateY(-4px);
+  }
+}
+
+.animate-subtle-breathe {
+  animation: subtleAmbientBreathe 26s cubic-bezier(0.4, 0, 0.6, 1) infinite alternate;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* =============================================================================
+   HEART / LIKE ICON USER ENGAGEMENT ANIMATION
+   ============================================================================= */
+@keyframes heartPop {
+  0% {
+    transform: scale(1);
+  }
+  28% {
+    transform: scale(1.38);
+  }
+  50% {
+    transform: scale(0.92);
+  }
+  75% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-heart-pop {
+  animation: heartPop 0.52s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  will-change: transform;
+}
+
+@keyframes floatLikePlus {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0) scale(0.6);
+  }
+  25% {
+    opacity: 1;
+    transform: translate(-50%, -6px) scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -22px) scale(0.85);
+  }
+}
+
+.animate-like-float {
+  animation: floatLikePlus 0.65s ease-out forwards;
+  will-change: transform, opacity;
+}
+
